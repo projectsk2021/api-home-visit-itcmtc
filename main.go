@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -38,7 +39,12 @@ func main() {
 	router.VisitRouter(api.Group("/visit"), DB)
 	router.StaticRouter(api.Group("/static"), DB)
 
-	app.Listen(fmt.Sprintf(":%v", viper.GetInt("post")))
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = strconv.Itoa(viper.GetInt("post"))
+	}
+	app.Listen(fmt.Sprintf(":%v", port))
 }
 
 func initConfig() {
