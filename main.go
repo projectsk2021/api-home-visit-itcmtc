@@ -39,10 +39,7 @@ func main() {
 	router.StaticRouter(api.Group("/static"), DB)
 
 	port := os.Getenv("PORT")
-
-	// if port == "" {
-	// 	port = strconv.Itoa(viper.GetInt("post"))
-	// }
+	
 	app.Listen(fmt.Sprintf(":%v", port))
 }
 
