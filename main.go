@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -41,9 +40,9 @@ func main() {
 
 	port := os.Getenv("PORT")
 
-	if port == "" {
-		port = strconv.Itoa(viper.GetInt("post"))
-	}
+	// if port == "" {
+	// 	port = strconv.Itoa(viper.GetInt("post"))
+	// }
 	app.Listen(fmt.Sprintf(":%v", port))
 }
 
